@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import User
 import re
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-from rest_framework_simplejwt.tokens import RefreshToken
+
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self, attrs,user):
@@ -11,8 +11,8 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         # Customize the payload data here
         # For example, you can add custom claims to the payload
         data['is_doct'] = "self.user.is_doctor"
-
         return data
+
 
 class UserRegisterationSerializer(serializers.ModelSerializer):
      password2 = serializers.CharField(style={'input_type':'password'},write_only=True)

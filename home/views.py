@@ -15,7 +15,7 @@ class UserRegisterationView(APIView):
      def get(self,request,format=None):
           return Response({
                'msg':'Register Your Credentials',
-               'Fields':['first_name','last_name','email','username','password','password2']
+               'Fields':['first_name','last_name','email','username','password','password2','is_docter']
           },status=status.HTTP_200_OK)
      
      def post(self,request,format=None):
@@ -25,6 +25,7 @@ class UserRegisterationView(APIView):
                
                return Response({'msg':'Registeration Successfull'},status=status.HTTP_201_CREATED)
           return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+
 
 
 class UserLoginView(APIView):
@@ -89,6 +90,7 @@ class HomePageView(APIView):
           if user.is_doctor:                                                # For Doctor
                serializer = DoctorProfileSerializer(request.user)
                return Response(serializer.data,status=status.HTTP_200_OK)
+
 
 
 
