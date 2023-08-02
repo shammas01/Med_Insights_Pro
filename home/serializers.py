@@ -16,6 +16,7 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
 
 class UserRegisterationSerializer(serializers.ModelSerializer):
      password2 = serializers.CharField(style={'input_type':'password'},write_only=True)
+     
      class Meta:
           model = User
           fields = ['first_name','last_name','username','email','password','password2','is_doctor']
