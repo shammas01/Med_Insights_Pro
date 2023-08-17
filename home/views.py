@@ -21,7 +21,7 @@ class UserRegisterationView(APIView):
      def post(self,request,format=None):
           serializer = UserRegisterationSerializer(data=request.data)
           if serializer.is_valid():
-               user = serializer.save()
+               serializer.save()
                
                return Response({'msg':'Registeration Successfull'},status=status.HTTP_201_CREATED)
           return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
@@ -29,11 +29,11 @@ class UserRegisterationView(APIView):
 
 
 class UserLoginView(APIView):
-     def get(self,request,format=None):
-          return Response({
-               'msg':'Enter Your Credentials For Login',
-               'fields':['email','password']
-          },status=status.HTTP_200_OK)
+     # def get(self,request,format=None):
+     #      return Response({
+     #           'msg':'Enter Your Credentials For Login',
+     #           'fields':['email','password']
+     #      },status=status.HTTP_200_OK)
      
      def post(self,request,format=None):
           serializer = UserLoginSerializer(data=request.data) 
